@@ -6,11 +6,6 @@ const Home = () => {
   return (
     <Container>
       <Text>Home</Text>
-      <Text>Home</Text>
-      <Text>Home</Text>
-      <Text>Home</Text>
-      <Text>Home</Text>
-      <Text>Home</Text>
     </Container>
   );
 };
