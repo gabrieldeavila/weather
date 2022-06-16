@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { memo } from "react";
+import { fontOptions } from "./mixins";
 
 const StyledScrollView = styled.ScrollView``;
 
@@ -13,3 +14,7 @@ export const Container = memo((props) => {
     </StyledContainer>
   );
 });
+
+export const Text = styled.Text`
+  ${fontOptions};
+`;
