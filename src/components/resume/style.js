@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
-import { Container, Text } from "../../base/style";
+import { Text } from "../../base/style";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { colors } from "../../base/colors";
 import { flex } from "../../base/mixins";
 
-export const ResumeWrapper = styled(Container)``;
+export const ResumeWrapper = styled.View``;
 
 export const CurrWeatherWrapper = styled.View`
   ${flex}

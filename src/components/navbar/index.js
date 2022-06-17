@@ -1,8 +1,5 @@
 import React, { memo } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { Container, Text } from "../../base/style";
 import { NavbarContainer, NavbarTextWrapper } from "./style";
-import { colors } from "./../../base/colors";
 
 const Navbar = () => {
   return (

@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
-import { Container } from "../base/style";
 
 const Home = lazy(() => import("../screens/home"));
 

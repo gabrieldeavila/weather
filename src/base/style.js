@@ -4,7 +4,9 @@ import { memo } from "react";
 import { fontColors, fontOptions, fontSizes } from "./mixins";
 import { colors } from "./colors";
 
-const StyledScrollView = styled.ScrollView``;
+const StyledScrollView = styled.ScrollView`
+  margin-top: 10px;
+`;
 
 const StyledContainer = styled(SafeAreaView)`
   background: ${colors.primary};

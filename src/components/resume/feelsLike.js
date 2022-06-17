@@ -12,8 +12,6 @@ const FeelsLike = () => {
 
   const value = useMemo(() => fixedTemp(feelslike_c), [feelslike_c]);
 
-  console.log(state);
-
   return (
     <FeelsLikeWrapper>
       <FeelsLikeText>Sensação de {value}°C</FeelsLikeText>

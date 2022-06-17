@@ -27,7 +27,7 @@ export const fontOptions = css`
 `;
 
 export const fontColors = css`
-  color: ${({ color }) => colors[color] || colors.primary};
+  color: ${({ color }) => colors[color] || colors.tertiary};
 `;
 
 export const flex = css`
