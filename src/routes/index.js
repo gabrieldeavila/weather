@@ -9,8 +9,6 @@ const Home = lazy(() => import("../screens/home"));
 const Stack = createNativeStackNavigator();
 
 const Routes = () => {
-  console.log("vem aqui11?");
-
   return (
     <Suspense fallback={<Text>Loading...</Text>}>
       <NavigationContainer>

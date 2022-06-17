@@ -9,5 +9,6 @@ export const apiForecast = axios.create({
 apiForecast.interceptors.request.use((config) => {
   config.params = config.params || {};
   config.params["key"] = Constants.manifest.extra.weather_api_key;
+
   return config;
 });

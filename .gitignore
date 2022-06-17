@@ -2,6 +2,9 @@
 #
 .DS_Store
 
+#APP.JSON
+app.json
+
 # Xcode
 #
 build/
@@ -53,3 +56,4 @@ buck-out/
 .expo/
 web-build/
 dist/
+                                                                                                                                                                                                
