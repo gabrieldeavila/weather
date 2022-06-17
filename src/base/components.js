@@ -13,3 +13,8 @@ export const Ball = styled.View`
   border-radius: 2.5px;
   background: ${colors.tertiary};
 `;
+
+export const Space = styled.View`
+  width: ${({ size }) => sizes[size] || 10}px;
+  height: ${({ size }) => sizes[size] || 5}px;
+`;

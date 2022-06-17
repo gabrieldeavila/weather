@@ -1,7 +1,10 @@
 import moment from "moment";
 import localization from "moment/locale/pt-br";
-// moment("de");
 
+/**
+ * Formata a data atual para ddd, DD MMM, ex.: Sex, 17 Jun
+ * @return {String}
+ */
 export const getCurrDay = () => {
   let date = new Date();
   let momentDate = moment(date);
@@ -9,6 +12,11 @@ export const getCurrDay = () => {
   return momentDate.format("ddd, DD MMM");
 };
 
+/**
+ * Retorna um ícone com base na condição climática, ex.: Fog -> cloudy
+ * @param  {String} condition - a condição climática
+ * @return {String}
+ */
 export const getCurrConditionIcon = (condition) => {
   let icon = "cloudy";
 
@@ -30,6 +38,25 @@ export const getCurrConditionIcon = (condition) => {
   return icon;
 };
 
+/**
+ * Faz com que uma temperatura seja formatada para 0 casas decimais, ex.: 15.2 -> 15
+ * @param  {String|Number} temp - a temperatura
+ * @return {String}
+ */
 export const fixedTemp = (temp) => {
   return parseFloat(temp, 0).toFixed(0);
+};
+
+/**
+ * Retorna o horário de uma data no formato 0PM, 1PM, 12PM
+ * @param  {String} time - a data, no formato YYYY-MM-DD HH:MM, ex.: 2020-06-17 12:00
+ * @return {String} - o horário, no formato HH:MM, ex.: 12:00
+ */
+export const getTime = (time) => {
+  let date = new Date(time);
+  let momentDate = moment(date);
+
+  let hour12 = momentDate.format("hA");
+
+  return hour12;
 };
