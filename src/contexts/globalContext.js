@@ -1,10 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import * as Location from "expo-location";
 import { apiForecast } from "./../api/index";
+const controller = new AbortController();
 
 export const GlobalContext = createContext();
 
 const GlobalContextProvider = ({ children }) => {
+  const controllerRef = useRef("");
   const [state, setState] = useState({});
   const [location, setLocation] = useState(null);
 
@@ -22,23 +24,35 @@ const GlobalContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    const { latitude, longitude } = location?.coords || {};
+
     let params = {
-      q: "-29.1612143,-51.5044158",
+      q: `${latitude},${longitude}`,
     };
-    apiForecast("", { params })
+
+    if (!latitude || !longitude) {
+      return;
+    }
+
+    if (controllerRef.current !== "") {
+      controller.abort();
+    }
+
+    controllerRef.current = true;
+
+    apiForecast(
+      "",
+      { params },
+      {
+        signal: controller.signal,
+      }
+    )
       .then((res) => {
-        console.log(res);
+        setState(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    // axios
-    //   .get(
-    //     `http://api.weatherapi.com/v1/sports.json?key=a72514354c3f440488f03541221606&q=`
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
   }, [location]);
 
   return (
