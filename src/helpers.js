@@ -29,3 +29,7 @@ export const getCurrConditionIcon = (condition) => {
 
   return icon;
 };
+
+export const fixedTemp = (temp) => {
+  return parseFloat(temp, 0).toFixed(0);
+};

@@ -95,8 +95,32 @@ const StyledPlaceText = styled(Text)``;
 
 export const PlaceText = ({ children, ...props }) => {
   return (
-    <StyledPlaceText color="tertiary" font="regular" size="medium" {...props}>
+    <StyledPlaceText color="tertiary" font="regular" size="small" {...props}>
       {children}
     </StyledPlaceText>
+  );
+};
+
+export const FeelsLikeWrapper = styled(TempContainer)`
+  margin-top: 30px;
+  justify-content: space-evenly;
+`;
+
+const StyledFeelsLikeText = styled(Text)`
+  width: 33%;
+  text-align: center;
+  flex-grow: 1;
+`;
+
+export const FeelsLikeText = ({ children, ...props }) => {
+  return (
+    <StyledFeelsLikeText
+      color="tertiary"
+      font="regular"
+      size="small"
+      {...props}
+    >
+      {children}
+    </StyledFeelsLikeText>
   );
 };
