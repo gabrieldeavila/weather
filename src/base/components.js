@@ -1,5 +1,7 @@
+import { ActivityIndicator, Dimensions, View } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "./colors";
+import { flex } from "./mixins";
 
 const sizes = {
   small: 5,
@@ -18,3 +20,17 @@ export const Space = styled.View`
   width: ${({ size }) => sizes[size] || 10}px;
   height: ${({ size }) => sizes[size] || 5}px;
 `;
+
+const LoadingIndicatorWrapper = styled.View`
+  width: 100%;
+  height: ${Dimensions.get("window").height}px;
+  ${flex};
+`;
+
+export const LoadingIndicator = () => {
+  return (
+    <LoadingIndicatorWrapper>
+      <ActivityIndicator size="large" color={colors.tertiary} />
+    </LoadingIndicatorWrapper>
+  );
+};

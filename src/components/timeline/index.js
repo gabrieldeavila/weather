@@ -15,37 +15,21 @@ import { Text } from "../../base/style";
 const Timeline = () => {
   const { state } = useContext(GlobalContext);
   const { hour } = state?.forecast?.forecastday?.[0] || [];
-  const [dataSourceCords, setDataSourceCords] = useState([]);
 
-  const handleLayout = useCallback((e) => {}, []);
-  const scrollRef = useRef();
   const [ref, setRef] = useState(null);
 
-  const handleCHange = () => {
-    ref.scrollTo({
-      x: 0,
-      y: 2710.54541015625,
-      animated: true,
-    });
-  };
-
   return (
-    <>
-      <TouchableOpacity onPress={handleCHange}>
-        <Text>Scrolllllsss</Text>
-      </TouchableOpacity>
-      <TimelineWrapper
-        scrollRef={(ref) => {
-          setRef(ref);
-        }}
-      >
-        <Space />
-        {hour?.map((item, index) => (
-          <Time key={index} scrollRef={ref} {...item} />
-        ))}
-        <Space />
-      </TimelineWrapper>
-    </>
+    <TimelineWrapper
+      scrollRef={(ref) => {
+        setRef(ref);
+      }}
+    >
+      <Space />
+      {hour?.map((item, index) => (
+        <Time key={index} scrollRef={ref} {...item} />
+      ))}
+      <Space />
+    </TimelineWrapper>
   );
 };
 

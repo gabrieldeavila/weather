@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Text } from "../../base/style";
 import Resume from "../../components/resume";
 import Timeline from "../../components/timeline";
+import { GlobalContext } from "../../contexts/globalContext";
+import _ from "lodash";
+import { LoadingIndicator } from "../../base/components";
 
 const Home = () => {
+  const { state } = useContext(GlobalContext);
+
   return (
     <Container>
-      <Resume />
-      <Timeline />
+      {_.isEmpty(state.current) ? (
+        <LoadingIndicator />
+      ) : (
+        <>
+          <Resume />
+          <Timeline />
+        </>
+      )}
     </Container>
   );
 };
