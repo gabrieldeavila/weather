@@ -1,4 +1,5 @@
 import { css } from "styled-components/native";
+import { colors } from "./colors";
 
 const options = {
   thin: "Inter_100Thin",
@@ -12,7 +13,29 @@ const options = {
   black: "Inter_900Black",
 };
 
+const sizes = {
+  small: "12px",
+  medium: "14px",
+  large: "16px",
+  extra_large: "18px",
+  extra_extra_large: "24px",
+  super_large: "70px",
+};
+
 export const fontOptions = css`
-  font-family: ${(props) =>
-    options[Object.keys(props || {})?.[1]] || "Inter_500Medium"};
+  font-family: ${({ font }) => options[font] || "Inter_500Medium"};
+`;
+
+export const fontColors = css`
+  color: ${({ color }) => colors[color] || colors.primary};
+`;
+
+export const flex = css`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const fontSizes = css`
+  font-size: ${({ size }) => sizes[size] || sizes.medium};
 `;
