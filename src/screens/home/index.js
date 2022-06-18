@@ -8,7 +8,7 @@ import { LoadingIndicator } from "../../base/components";
 
 const Home = () => {
   const { state } = useContext(GlobalContext);
-
+  console.log(state);
   return (
     <Container>
       {_.isEmpty(state.current) ? (

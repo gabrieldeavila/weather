@@ -8,7 +8,7 @@
       "permissions": ["LOCATION"]
     },
     "extra": {
-      "weather_api_key": "a72514354c3f440488f03541221606"
+      "weather_api_key": "<API>"
     }
   }
 }
