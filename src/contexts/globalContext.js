@@ -9,6 +9,7 @@ const GlobalContextProvider = ({ children }) => {
   const controllerRef = useRef("");
   const [state, setState] = useState({});
   const [location, setLocation] = useState(null);
+  const [mode, setMode] = useState("TODAY");
 
   useEffect(() => {
     (async () => {
@@ -56,7 +57,7 @@ const GlobalContextProvider = ({ children }) => {
   }, [location]);
 
   return (
-    <GlobalContext.Provider value={{ state, setState }}>
+    <GlobalContext.Provider value={{ state, setState, mode, setMode }}>
       {children}
     </GlobalContext.Provider>
   );

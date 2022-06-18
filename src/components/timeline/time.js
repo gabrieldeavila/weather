@@ -1,11 +1,21 @@
-import React, { memo, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  memo,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { TimeText, TimeWrapper } from "./style";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { fixedTemp, getCurrConditionIcon, getTime } from "../../helpers";
 import { colors } from "../../base/colors";
 import { boxShadow } from "../../base/mixins";
+import { GlobalContext } from "../../contexts/globalContext";
 
 const Time = ({ condition, time, temp_c, scrollRef }) => {
+  const { mode } = useContext(GlobalContext);
+
   const { text } = condition || {};
 
   const hour = useMemo(() => getTime(time), [time]);
@@ -16,8 +26,8 @@ const Time = ({ condition, time, temp_c, scrollRef }) => {
     const now = new Date();
     const nowHour = getTime(now);
 
-    return hour === nowHour;
-  }, [hour]);
+    return hour === nowHour && mode === "TODAY";
+  }, [hour, mode]);
 
   const color = useMemo(() => {
     return isCurrHour ? "secondary" : "tertiary";
@@ -26,13 +36,13 @@ const Time = ({ condition, time, temp_c, scrollRef }) => {
   const [layout, setLayout] = useState();
 
   useEffect(() => {
-    if (isCurrHour) {
+    if (isCurrHour && mode === "TODAY") {
       scrollRef?.scrollTo?.({
         ...layout,
         animated: true,
       });
     }
-  }, [hour, scrollRef, layout]);
+  }, [hour, scrollRef, layout, mode]);
 
   return (
     <TimeWrapper

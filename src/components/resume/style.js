@@ -103,12 +103,13 @@ export const PlaceText = ({ children, ...props }) => {
 
 export const FeelsLikeWrapper = styled(TempContainer)`
   margin-top: 30px;
-  justify-content: space-evenly;
+  padding: 0 10px;
 `;
 
 const StyledFeelsLikeText = styled(Text)`
   width: 33%;
-  text-align: center;
+  text-align: ${({ align }) => align || "left"};
+  margin: 0 10px;
   flex-grow: 1;
 `;
 

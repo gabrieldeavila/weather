@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React, { memo, useContext } from "react";
 import { PlaceText, PlaceWrapper } from "./style";
 import { GlobalContext } from "../../contexts/globalContext";

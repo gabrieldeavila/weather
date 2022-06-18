@@ -1,22 +1,25 @@
-import { View, ScrollView, TouchableOpacity } from "react-native";
-import React, { memo, useCallback, useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { GlobalContext } from "../../contexts/globalContext";
-import { TimelineText, TimelineWrapper } from "./style";
-import {
-  CurrWeatherWrapper,
-  DayInfo,
-  ResumeWrapper,
-  TodayText,
-} from "../resume/style";
+import { TimelineWrapper } from "./style";
 import Time from "./time";
 import { Space } from "../../base/components";
-import { Text } from "../../base/style";
 
 const Timeline = () => {
-  const { state } = useContext(GlobalContext);
-  const { hour } = state?.forecast?.forecastday?.[0] || [];
+  const { state, mode } = useContext(GlobalContext);
+  const forecastDay = useMemo(() => (mode === "TODAY" ? 0 : 1), [mode]);
+
+  const { hour } = state?.forecast?.forecastday?.[forecastDay] || [];
 
   const [ref, setRef] = useState(null);
+
+  useEffect(() => {
+    if (mode === "TOMORROW") {
+      ref?.scrollTo?.({
+        animated: true,
+        x: 0,
+      });
+    }
+  }, [mode]);
 
   return (
     <TimelineWrapper

@@ -14,7 +14,7 @@ const FeelsLike = () => {
 
   return (
     <FeelsLikeWrapper>
-      <FeelsLikeText>Sensação de {value}°C</FeelsLikeText>
+      <FeelsLikeText align="right">Sensação de {value}°C</FeelsLikeText>
       <Ball />
       <FeelsLikeText>Por do sol às {sunset}</FeelsLikeText>
     </FeelsLikeWrapper>

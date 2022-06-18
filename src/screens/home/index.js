@@ -5,6 +5,7 @@ import Timeline from "../../components/timeline";
 import { GlobalContext } from "../../contexts/globalContext";
 import _ from "lodash";
 import { LoadingIndicator } from "../../base/components";
+import Day from "../../components/day";
 
 const Home = () => {
   const { state } = useContext(GlobalContext);
@@ -16,6 +17,7 @@ const Home = () => {
       ) : (
         <>
           <Resume />
+          <Day />
           <Timeline />
         </>
       )}
