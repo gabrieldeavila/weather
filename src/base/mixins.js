@@ -39,3 +39,15 @@ export const flex = css`
 export const fontSizes = css`
   font-size: ${({ size }) => sizes[size] || sizes.medium};
 `;
+
+export const boxShadow = {
+  shadowColor: "#FFF",
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.23,
+  shadowRadius: 2.62,
+
+  elevation: 4,
+};

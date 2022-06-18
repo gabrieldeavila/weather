@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, View } from "react-native";
 import styled from "styled-components/native";
 import { colors } from "../../base/colors";
 import { flex } from "../../base/mixins";
@@ -6,6 +6,8 @@ import { Text } from "../../base/style";
 
 const StyledTimelineWrapper = styled.ScrollView`
   margin-top: 30px;
+  overflow: visible;
+  padding-top: 10px;
   width: ${Dimensions.get("window").width}px;
 `;
 
@@ -16,7 +18,6 @@ export const TimelineWrapper = ({ children, scrollRef, ...props }) => {
       horizontal
       showsHorizontalScrollIndicator={false}
       {...props}
-      style={{ flexDirection: "row" }}
     >
       {children}
     </StyledTimelineWrapper>
@@ -34,7 +35,8 @@ export const TimelineText = ({ children, ...props }) => {
 };
 
 export const TimeWrapper = styled.View`
-  background: ${colors.secondary};
+  background: ${({ isCurrHour }) =>
+    isCurrHour ? colors.tertiary : colors.secondary};
   margin-right: 5px;
   padding: 20px;
   width: 100px;
