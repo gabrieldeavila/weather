@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
-import { Container, Text } from "../../base/style";
+import React, { useContext, useMemo } from "react";
+import { Container } from "../../base/style";
 import Resume from "../../components/resume";
 import Timeline from "../../components/timeline";
 import { GlobalContext } from "../../contexts/globalContext";
 import _ from "lodash";
 import { LoadingIndicator } from "../../base/components";
 import Day from "../../components/day";
+import GeneralInfo from "../../components/generalInfo";
 
 const Home = () => {
-  const { state } = useContext(GlobalContext);
-  console.log(state);
+  const { state, mode } = useContext(GlobalContext);
+  const forecastDay = useMemo(() => (mode === "TODAY" ? 0 : 1), [mode]);
+
+  const forecast = state?.forecast?.forecastday?.[forecastDay];
+
   return (
     <Container>
       {_.isEmpty(state.current) ? (
@@ -19,6 +23,7 @@ const Home = () => {
           <Resume />
           <Day />
           <Timeline />
+          <GeneralInfo {...forecast} />
         </>
       )}
     </Container>

@@ -1,13 +1,17 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { GeneralInfoWrapper } from "./style";
+import React, { memo } from "react";
+import { GeneralInfoContainer, GeneralInfoWrapper, InfoText } from "./style";
+import GeneralInfoHeader from "./header";
+import Info from "./info";
 
-const GeneralInfo = () => {
+const GeneralInfo = (props) => {
   return (
     <GeneralInfoWrapper>
-      <Text>GeneralInfo</Text>
+      <GeneralInfoContainer>
+        <GeneralInfoHeader {...props} />
+        <Info {...props} />
+      </GeneralInfoContainer>
     </GeneralInfoWrapper>
   );
 };
 
-export default GeneralInfo;
+export default memo(GeneralInfo);

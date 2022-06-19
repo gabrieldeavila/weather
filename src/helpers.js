@@ -13,6 +13,19 @@ export const getCurrDay = () => {
 };
 
 /**
+ * Retorna o nome do dia da semana, ex: Seg, Ter, Qu.
+ * !!IMPORTANTE!!
+ * @param {String} date - Data no formato "YYYY-MM-DD HH:MM:SS", ex.: "2020-06-17 23:59". NÃO RETORNE 00:00 OU DIMINUIRÁ A DATA POR UM DIA
+ * @return {String}
+ */
+export const getDayName = (dt) => {
+  let date = new Date(dt);
+  let momentDate = moment(date);
+
+  return momentDate.format("dddd");
+};
+
+/**
  * Retorna um ícone com base na condição climática, ex.: Fog -> cloudy
  * @param  {String} condition - a condição climática
  * @return {String}
