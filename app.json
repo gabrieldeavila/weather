@@ -1,14 +1,23 @@
 {
   "expo": {
-    "name": "weather",
+    "name": "Weather",
     "slug": "weather",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
+    "icon": "./public/logo.png",
+    "splash": {
+      "image": "./public/splash.png",
+      "resizeMode": "cover"
+    },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/logo.png",
+        "backgroundColor": "#000000"
+      },
       "permissions": ["LOCATION"]
     },
     "extra": {
-      "weather_api_key": "<API>"
+      "weather_api_key": "<API_KEY>"
     }
   }
 }
