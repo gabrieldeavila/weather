@@ -9,15 +9,22 @@
       "image": "./public/splash.png",
       "resizeMode": "cover"
     },
+    "platforms": ["ios", "android"],
+    "extra": {
+      "weather_api_key": "<API_KEY>"
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./public/logo.png",
         "backgroundColor": "#000000"
       },
-      "permissions": ["LOCATION"]
-    },
-    "extra": {
-      "weather_api_key": "<API_KEY>"
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_LOCATION_EXTRA_COMMANDS"
+      ],
+      "package": "com.gabrielgt.theuniqueandonlyweatherapp",
+      "versionCode": 1
     }
   }
 }
