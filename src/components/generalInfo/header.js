@@ -1,9 +1,12 @@
 import { View, Text } from "react-native";
 import React, { memo, useMemo } from "react";
-import { HeaderInfoWrapper, HeaderWrapper, InfoText } from "./style";
-import { getCurrConditionIcon, getDayName } from "../../helpers";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { colors } from "../../base/colors";
+import {
+  HeaderIcon,
+  HeaderInfoWrapper,
+  HeaderWrapper,
+  InfoText,
+} from "./style";
+import { fixedTemp, getCurrConditionIcon, getDayName } from "../../helpers";
 
 const GeneralInfoHeader = ({ date, day }) => {
   const dayName = useMemo(() => getDayName(`${date} 23:59`), [date]);
@@ -11,18 +14,20 @@ const GeneralInfoHeader = ({ date, day }) => {
   const { text } = day?.condition || {};
   const { maxtemp_c, mintemp_c } = day || {};
 
+  const maxTemp = useMemo(() => fixedTemp(maxtemp_c), [maxtemp_c]);
+  const minTemp = useMemo(() => fixedTemp(mintemp_c), [mintemp_c]);
   const icon = useMemo(() => getCurrConditionIcon(text), [text]);
 
   return (
     <HeaderWrapper>
       <HeaderInfoWrapper>
         <InfoText>{dayName}</InfoText>
-        <Ionicons name={icon} size={30} color={colors.tertiary} />
+        <HeaderIcon name={icon} />
       </HeaderInfoWrapper>
 
       <HeaderInfoWrapper>
-        <InfoText>{maxtemp_c}°C</InfoText>
-        <InfoText>{mintemp_c}°C</InfoText>
+        <InfoText size="extra_extra_large">{maxTemp}°C</InfoText>
+        <InfoText font="light">{minTemp}°C</InfoText>
       </HeaderInfoWrapper>
     </HeaderWrapper>
   );

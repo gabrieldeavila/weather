@@ -1,32 +1,46 @@
-import { View, Text } from "react-native";
 import React, { memo } from "react";
-import { HeaderWrapper, InfoText } from "./style";
+import {
+  HeaderWrapper,
+  InfoContainer,
+  InfoRow,
+  InfoText,
+  InfoTimeText,
+  InfoWrapper,
+} from "./style";
 
 const Info = ({ day }) => {
   const { daily_chance_of_rain, avgvis_km, uv, avghumidity } = day || {};
 
   return (
-    <HeaderWrapper>
-      <View>
-        <InfoText>Chuva</InfoText>
-        <InfoText>{daily_chance_of_rain}%</InfoText>
-      </View>
+    <InfoWrapper>
+      <InfoRow>
+        <InfoContainer>
+          <InfoTimeText>UV</InfoTimeText>
+          <InfoTimeText margin font="light">
+            {uv}
+          </InfoTimeText>
+        </InfoContainer>
 
-      <View>
-        <InfoText>Visibilidade</InfoText>
-        <InfoText>{avgvis_km}km</InfoText>
-      </View>
+        <InfoContainer>
+          <InfoTimeText>Visibilidade</InfoTimeText>
+          <InfoTimeText font="light">{avgvis_km}km</InfoTimeText>
+        </InfoContainer>
+      </InfoRow>
 
-      <View>
-        <InfoText>UV</InfoText>
-        <InfoText>{uv}</InfoText>
-      </View>
+      <InfoRow>
+        <InfoContainer>
+          <InfoTimeText>Humidade</InfoTimeText>
+          <InfoTimeText margin font="light">
+            {avghumidity}%
+          </InfoTimeText>
+        </InfoContainer>
 
-      <View>
-        <InfoText>Humidade</InfoText>
-        <InfoText>{avghumidity}%</InfoText>
-      </View>
-    </HeaderWrapper>
+        <InfoContainer>
+          <InfoTimeText>Chuva</InfoTimeText>
+          <InfoTimeText font="light">{daily_chance_of_rain}%</InfoTimeText>
+        </InfoContainer>
+      </InfoRow>
+    </InfoWrapper>
   );
 };
 
