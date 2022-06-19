@@ -4,12 +4,17 @@ import { GlobalContext } from "../../contexts/globalContext";
 import { DayOptionWrapper, DayWrapper, TimeDayText } from "./style";
 import { colors } from "./../../base/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { navigate } from "../../routes/RootNavigation";
 
 const Day = () => {
   const { mode, setMode } = useContext(GlobalContext);
 
   const handlePress = useCallback((e) => {
     setMode(e);
+  }, []);
+
+  const handleNavigate = useCallback(() => {
+    navigate("MoreDays");
   }, []);
 
   return (
@@ -24,7 +29,7 @@ const Day = () => {
         {mode === "TOMORROW" && <Ball />}
       </DayOptionWrapper>
 
-      <DayOptionWrapper>
+      <DayOptionWrapper onPress={handleNavigate}>
         <TimeDayText highlight>Próximos 3 dias</TimeDayText>
         <Ionicons
           name="arrow-forward-outline"
