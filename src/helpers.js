@@ -19,8 +19,7 @@ export const getCurrDay = () => {
  * @return {String}
  */
 export const getDayName = (dt) => {
-  let date = new Date(dt);
-  let momentDate = moment(date);
+  let momentDate = moment(dt);
 
   return momentDate.format("dddd");
 };
@@ -66,8 +65,7 @@ export const fixedTemp = (temp) => {
  * @return {String} - o horário, no formato HH:MM, ex.: 12:00
  */
 export const getTime = (time) => {
-  let date = new Date(time);
-  let momentDate = moment(date);
+  let momentDate = moment(time);
 
   let hour12 = momentDate.format("hA");
 
